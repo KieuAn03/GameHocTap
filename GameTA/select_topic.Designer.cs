@@ -29,16 +29,24 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(359, 210);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(346, 210);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(643, 375);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(667, 375);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // select_topic
             // 
@@ -51,6 +59,8 @@
             this.Name = "select_topic";
             this.Size = new System.Drawing.Size(1360, 768);
             this.Load += new System.EventHandler(this.select_topic_Load);
+            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.select_topic_ControlRemoved);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -58,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

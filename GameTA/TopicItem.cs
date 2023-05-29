@@ -19,11 +19,23 @@ namespace GameTA
 
         private void TopicItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(@"playing.txt"))
+            label1_Click(sender, e);
+        }
+        protected virtual bool DoubleBuffered { get; set; }
+        private void TopicItem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(@"play/"))
             {
-                StreamWriter writer = new StreamWriter("playing.txt");
-                writer.Write(label1.Text);
+                StreamWriter writer = new StreamWriter(@"play/playing.txt");
+                writer.WriteLine(label1.Text);
                 writer.Close();
+                this.Controls.Clear();
+                this.Parent.Parent.Controls.Remove(this.Parent);
             }
         }
     }

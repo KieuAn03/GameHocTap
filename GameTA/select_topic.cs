@@ -15,8 +15,8 @@ namespace GameTA
         public select_topic()
         {
             InitializeComponent();
-            if(Directory.Exists(@"data/"))
-            { 
+            if (Directory.Exists(@"data/"))
+            {
                 DirectoryInfo di = new DirectoryInfo(@"data/");           
                 List<string> list = new List<string>();
                 foreach (DirectoryInfo dir in di.GetDirectories())
@@ -29,10 +29,13 @@ namespace GameTA
                     item.label1.Text = list[i];
                     flowLayoutPanel1.Controls.Add(item);
                 }
+                di = null;
+                list.Clear();
+                list = null;
             }
            
         }
-
+        
         private void select_topic_Load(object sender, EventArgs e)
         {
 
@@ -40,6 +43,21 @@ namespace GameTA
         protected virtual bool DoubleBuffered { get; set; }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void select_topic_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+        }
+
+        private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
+        {
+
+        }
+
+        private void inGame1_Load(object sender, EventArgs e)
         {
 
         }
